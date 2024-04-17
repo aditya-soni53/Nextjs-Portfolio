@@ -66,7 +66,10 @@ const Project = ({ data }) => {
                           </p>
                           <div className="grid gap-2 mt-5 grid-cols-2 h-full max-h-[200px] w-full">
                             {item?.technologies.split(",").map((techItem) => (
-                              <div className="w-full flex justify-start items-center">
+                              <div
+                                key={techItem}
+                                className="w-full flex justify-start items-center"
+                              >
                                 <button className="whitespace-nowrap text-ellipsis overflow-hidden py-3 w-[120px]  px-6 border-[2px] border-green-main bg-[#fff] text-[#000] font-semibold rounded-lg text-xs tracking-widest hover:shadow-green-main transition-all outline-none">
                                   {techItem}
                                 </button>

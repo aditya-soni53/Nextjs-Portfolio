@@ -84,9 +84,9 @@ const Contact = () => {
         <div className="container px-5">
           <div className="w-full">
             <div className="flex flex-wrap -m-2">
-              {controls.map((controlItem) =>
+              {controls.map((controlItem, index) =>
                 controlItem.name === "message" ? (
-                  <div className="p-2 w-full">
+                  <div key={index} className="p-2 w-full">
                     <div className="relative">
                       <label className="text-sm text-[#000]">
                         {controlItem.label}
