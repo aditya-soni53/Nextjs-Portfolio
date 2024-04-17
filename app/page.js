@@ -21,15 +21,21 @@ export default async function Home() {
   const projectSectionData = await extractData("projects");
 
   return (
-    <div>
+    <>
       <HomeClient data={homeSectionData} />
-      <About data={aboutSectionData} />
+      <About
+        data={
+          aboutSectionData && aboutSectionData.length
+            ? aboutSectionData[0]
+            : null
+        }
+      />
       <ExperienceAndEducation
-        experiencedata={experienceSectionData}
-        educationdata={educationSectionData}
+        experienceData={experienceSectionData}
+        educationData={educationSectionData}
       />
       <Project data={projectSectionData} />
       <Contact />
-    </div>
+    </>
   );
 }
