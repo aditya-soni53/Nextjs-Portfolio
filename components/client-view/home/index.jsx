@@ -5,6 +5,7 @@ import AnimationWrapper from "../animation-wrapper";
 import { motion } from "framer-motion";
 import { FaGithub, FaLinkedinIn, FaInstagram, FaTwitter } from "react-icons/fa";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 function variants() {
   return {
@@ -26,23 +27,16 @@ function variants() {
 const socialIcons = [
   {
     id: "github",
+    link: "https://github.com/aditya-soni53",
     icon: (
       <FaGithub color="rgba(13, 183, 96, 1)" className="w-[40px] h-[40px] " />
     ),
   },
   {
     id: "linkedin",
+    link: "https://www.linkedin.com/in/aditya-soni-894599203/",
     icon: (
       <FaLinkedinIn
-        color="rgba(13, 183, 96, 1)"
-        className="w-[40px] h-[40px] "
-      />
-    ),
-  },
-  {
-    id: "instagram",
-    icon: (
-      <FaInstagram
         color="rgba(13, 183, 96, 1)"
         className="w-[40px] h-[40px] "
       />
@@ -55,11 +49,13 @@ const HomeClient = ({ data }) => {
 
   const containerRef = useRef(null);
 
+  const router = useRouter();
+
   return (
-    <div className="max-w-screen-xl mt-24 px-8 xl:px-16 mx-auto" id="home">
+    <div className="max-w-screen-xl mt-24 lg:px-8 xl:px-16 mx-auto" id="home">
       <AnimationWrapper>
         <motion.div
-          className="grid grid-flow-row sm:grid-flow-col grid-rows-2 md:grid-rows-1 sm:grid-cols-2 gap-8 py-6 sm:py-16"
+          className="grid grid-flow-row sm:grid-flow-col grid-rows-2 md:grid-rows-1 sm:grid-cols-2 gap-8 px-3 py-6 sm:py-16"
           variants={setVariants}
         >
           <div className="flex flex-col justify-center items-start row-start-2 sm:row-start-1">
@@ -96,6 +92,7 @@ const HomeClient = ({ data }) => {
                   }}
                   whileHover={{ scale: 1.2, rotate: 360 }}
                   whileTap={{ scale: 0.8, rotate: -360, borderRadius: "100%" }}
+                  onClick={() => router.push(item.link)}
                 >
                   {item.icon}
                 </motion.div>
@@ -108,7 +105,7 @@ const HomeClient = ({ data }) => {
               dragConstraints={containerRef}
               className="w-[400px] h-[400px] relative bg-green-main"
             >
-              <div className="w-[400px] h-[400px] top-[40px] left-[-30px] rounded-lg border-[6px] border-[#000000] absolute"></div>
+              <div className="w-[400px] h-[400px] top-[40px] left-[-10px] lg:left-[-30px] rounded-lg border-[6px] border-[#000000] absolute"></div>
               <Image
                 src="/ai-image.png"
                 alt="Profile Picture"

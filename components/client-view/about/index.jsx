@@ -52,7 +52,7 @@ const About = ({ data }) => {
 
   return (
     <div
-      className="max-w-screen-xl mt-24 mb-6 sm:mt-14 sm:mb-14 px-6 sm:px-8 lg:px-16 mx-auto"
+      className="max-w-screen-xl mt-24 mb-6 sm:mt-14 sm:mb-14 px-3 sm:px-8 lg:px-16 mx-auto"
       id="about"
     >
       <div className="w-full flex">
@@ -88,7 +88,7 @@ const About = ({ data }) => {
       </div>
       <AnimationWrapper className={"pt-6"}>
         <div className="flex flex-col justify-center items-center row-start-2 sm:row-start-1">
-          <h1 className="leading-[70px] mb-4 text-3xl lg:text-4xl xl:text-5xl font-medium">
+          <h1 className="mb-4 text-3xl lg:text-4xl xl:text-5xl font-medium">
             {headingText.split(" ").map((item, index) => (
               <span
                 key={index}
@@ -98,7 +98,9 @@ const About = ({ data }) => {
               </span>
             ))}
           </h1>
-          <p className="text-[#000] mt-4 mb-8 font-bold">{data?.aboutme}</p>
+          <p className="text-[#000] mt-4 mb-8 font-bold text-justify">
+            {data?.aboutme}
+          </p>
         </div>
       </AnimationWrapper>
       <div className="grid grid-flow-row sm:grid-flow-col grid-cols-1 sm:grid-cols-2 gap-8">
