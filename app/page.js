@@ -22,7 +22,6 @@ export default function Home() {
   const [experienceData, setExperienceData] = useState({});
   const [educationData, setEducationData] = useState({});
   const [projectData, setProjectData] = useState({});
-  const [dataFetched, setDataFetched] = useState(false);
 
   useEffect(() => {
     const fetchDataForSection = async (section, setData) => {
@@ -37,7 +36,6 @@ export default function Home() {
       const education = fetchDataForSection("education", setEducationData);
       const projects = fetchDataForSection("projects", setProjectData);
       await Promise.all([home, about, experience, education, projects]);
-      setDataFetched(true);
     };
 
     fetchDataForAllSections();
@@ -45,22 +43,14 @@ export default function Home() {
 
   return (
     <>
-      {dataFetched ? (
-        <>
-          <HomeClient data={homeData} />
-          <About data={aboutData[0]} />
-          <ExperienceAndEducation
-            experienceData={experienceData}
-            educationData={educationData}
-          />
-          <Project data={projectData} />
-          <Contact />
-        </>
-      ) : (
-        <div className="w-full h-screen flex justify-center items-center">
-          Loading....
-        </div>
-      )}
+      <HomeClient data={homeData} />
+      <About data={aboutData[0]} />
+      <ExperienceAndEducation
+        experienceData={experienceData}
+        educationData={educationData}
+      />
+      <Project data={projectData} />
+      <Contact />
     </>
   );
 }
