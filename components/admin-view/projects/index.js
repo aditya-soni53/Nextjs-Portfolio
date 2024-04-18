@@ -41,7 +41,10 @@ export default function AdminProjectView({
         <div className="mb-10">
           {data && data.length
             ? data.map((item) => (
-                <div className="flex flex-col gap-4 border p-4 border-green-400">
+                <div
+                  key={item.id}
+                  className="flex flex-col gap-4 border p-4 border-green-400"
+                >
                   <p>{item.name}</p>
                   <p>{item.technologies}</p>
                   <p>{item.website}</p>
