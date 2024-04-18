@@ -161,6 +161,7 @@ export default function AdminView() {
       label: "Home",
       component: (
         <AdminHomeView
+          key={1}
           formData={homeViewFormData}
           setFormData={setHomeViewFormData}
           handlesaveData={handlesaveData}
@@ -172,6 +173,7 @@ export default function AdminView() {
       label: "About",
       component: (
         <AdminAboutView
+          key={2}
           formData={aboutViewFormData}
           setFormData={setAboutViewFormData}
           handlesaveData={handlesaveData}
@@ -183,6 +185,7 @@ export default function AdminView() {
       label: "Experience",
       component: (
         <AdminExperienceView
+          key={3}
           formData={experienceViewFormData}
           setFormData={setExperienceViewFormData}
           handlesaveData={handlesaveData}
@@ -195,6 +198,7 @@ export default function AdminView() {
       label: "Education",
       component: (
         <AdminEducationView
+          key={4}
           formData={educationViewFormData}
           setFormData={setEducationViewFormData}
           handlesaveData={handlesaveData}
@@ -207,6 +211,7 @@ export default function AdminView() {
       label: "Projects",
       component: (
         <AdminProjectView
+          key={5}
           formData={projectViewFormData}
           setFormData={setProjectViewFormData}
           handlesaveData={handlesaveData}
@@ -217,7 +222,7 @@ export default function AdminView() {
     {
       id: "contact",
       label: "Contact",
-      component: <AdminContactView data={allData?.contact} />,
+      component: <AdminContactView key={6} data={allData?.contact} />,
     },
   ];
 

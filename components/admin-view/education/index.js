@@ -35,7 +35,10 @@ export default function AdminEducationView({
         <div className="mb-10">
           {data && data.length
             ? data.map((item) => (
-                <div className="flex flex-col gap-4 border p-4 border-green-400">
+                <div
+                  key={item.id}
+                  className="flex flex-col gap-4 border p-4 border-green-400"
+                >
                   <p>{item.degree}</p>
                   <p>{item.year}</p>
                   <p>{item.college}</p>

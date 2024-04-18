@@ -2,7 +2,7 @@
 
 export default function FormControls({ controls, formData, setFormData }) {
   return controls.map((controlsItem) => (
-    <div className="mb-4">
+    <div key={controlsItem.name} className="mb-4">
       <label className="block text-gray-700 text-sm font-bold mb-2">
         {controlsItem.label}
       </label>
