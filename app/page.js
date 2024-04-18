@@ -28,17 +28,28 @@ export default function Home() {
 
   useEffect(() => {
     const fetchDataForSection = async (section, setData) => {
-      const data = await fetchData(section);
-      setData(data);
+      try {
+        const data = await fetchData(section);
+        setData(data);
+      } catch (error) {
+        // Handle the error, e.g., show a message to the user
+        console.error(`Error fetching data for ${section}:`, error);
+      }
     };
 
     const fetchDataForAllSections = async () => {
-      const home = fetchDataForSection("home", setHomeData);
-      const about = fetchDataForSection("about", setAboutData);
-      const experience = fetchDataForSection("experience", setExperienceData);
-      const education = fetchDataForSection("education", setEducationData);
-      const projects = fetchDataForSection("projects", setProjectData);
-      await Promise.all([home, about, experience, education, projects]);
+      try {
+        const home = fetchDataForSection("home", setHomeData);
+        const about = fetchDataForSection("about", setAboutData);
+        const experience = fetchDataForSection("experience", setExperienceData);
+        const education = fetchDataForSection("education", setEducationData);
+        const projects = fetchDataForSection("projects", setProjectData);
+        await Promise.all([home, about, experience, education, projects]);
+        setDataFetched(true);
+      } catch (error) {
+        // Handle the error, e.g., show a message to the user
+        console.error("Error fetching data for all sections:", error);
+      }
     };
 
     fetchDataForAllSections();
