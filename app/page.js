@@ -5,7 +5,7 @@ import Project from "@/components/client-view/project";
 import Contact from "@/components/client-view/contact";
 
 async function extractData(currentSection) {
-  const res = await fetch(`http://localhost:3000/api/${currentSection}/`, {
+  const res = await fetch(`/api/${currentSection}`, {
     method: "GET",
     cache: "no-store",
   });
