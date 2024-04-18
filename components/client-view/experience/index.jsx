@@ -39,8 +39,8 @@ const ExperienceAndEducation = ({ experienceData, educationData }) => {
               <motion.div className="container">
                 <Timeline position="right">
                   {experienceData && experienceData.length
-                    ? experienceData.map((experienceItem) => (
-                        <TimelineItem key={experienceItem.id}>
+                    ? experienceData.map((experienceItem, index) => (
+                        <TimelineItem key={index}>
                           <TimelineSeparator>
                             <TimelineDot className="bg-green-main" />
                             <TimelineConnector className="bg-green-main" />

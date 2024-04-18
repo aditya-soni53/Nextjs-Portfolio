@@ -1,11 +1,14 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import HomeClient from "@/components/client-view/home";
 import About from "@/components/client-view/about";
 import ExperienceAndEducation from "@/components/client-view/experience";
 import Project from "@/components/client-view/project";
 import Contact from "@/components/client-view/contact";
 
-async function extractData(currentSection) {
-  const res = await fetch(`/api/${currentSection}`, {
+async function fetchData(section) {
+  const res = await fetch(`/api/${section}`, {
     method: "GET",
     cache: "no-store",
   });
@@ -13,29 +16,51 @@ async function extractData(currentSection) {
   return data && data.data;
 }
 
-export default async function Home() {
-  const homeSectionData = await extractData("home");
-  const aboutSectionData = await extractData("about");
-  const experienceSectionData = await extractData("experience");
-  const educationSectionData = await extractData("education");
-  const projectSectionData = await extractData("projects");
+export default function Home() {
+  const [homeData, setHomeData] = useState({});
+  const [aboutData, setAboutData] = useState({});
+  const [experienceData, setExperienceData] = useState({});
+  const [educationData, setEducationData] = useState({});
+  const [projectData, setProjectData] = useState({});
+  const [dataFetched, setDataFetched] = useState(false);
+
+  useEffect(() => {
+    const fetchDataForSection = async (section, setData) => {
+      const data = await fetchData(section);
+      setData(data);
+    };
+
+    const fetchDataForAllSections = async () => {
+      const home = fetchDataForSection("home", setHomeData);
+      const about = fetchDataForSection("about", setAboutData);
+      const experience = fetchDataForSection("experience", setExperienceData);
+      const education = fetchDataForSection("education", setEducationData);
+      const projects = fetchDataForSection("projects", setProjectData);
+      await Promise.all([home, about, experience, education, projects]);
+      setDataFetched(true);
+    };
+
+    fetchDataForAllSections();
+  }, []);
 
   return (
     <>
-      <HomeClient data={homeSectionData} />
-      <About
-        data={
-          aboutSectionData && aboutSectionData.length
-            ? aboutSectionData[0]
-            : null
-        }
-      />
-      <ExperienceAndEducation
-        experienceData={experienceSectionData}
-        educationData={educationSectionData}
-      />
-      <Project data={projectSectionData} />
-      <Contact />
+      {dataFetched ? (
+        <>
+          <HomeClient data={homeData} />
+          <About data={aboutData[0]} />
+          <ExperienceAndEducation
+            experienceData={experienceData}
+            educationData={educationData}
+          />
+          <Project data={projectData} />
+          <Contact />
+        </>
+      ) : (
+        <div className="w-full h-screen flex justify-center items-center">
+          Loading....
+        </div>
+      )}
     </>
   );
 }
