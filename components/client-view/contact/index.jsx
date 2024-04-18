@@ -72,6 +72,7 @@ const Contact = () => {
           <h1 className="leading-[70px] mb-4 text-3xl lg:text-4xl xl:text-5xl font-medium">
             {"Contact Me".split(" ").map((item, index) => (
               <span
+                key={index}
                 className={`${index === 1 ? "text-green-main" : "text-[#000]"}`}
               >
                 {item}{" "}
@@ -106,7 +107,7 @@ const Contact = () => {
                     </div>
                   </div>
                 ) : (
-                  <div className="p-2 w-full">
+                  <div key={index} className="p-2 w-full">
                     <div className="relative">
                       <label className="text-sm text-[#000]">
                         {controlItem.label}

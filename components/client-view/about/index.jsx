@@ -119,10 +119,11 @@ const About = ({ data }) => {
             variants={setVariants}
             className="grid gap-4 grid-cols-3 h-full max-h-[200px] w-full"
           >
-            {data?.skills.split(",").map((skill) => (
+            {data?.skills.split(",").map((skill, index) => (
               <motion.div
                 className="w-full flex justify-center items-center"
                 variants={skillItemVariant}
+                key={index}
               >
                 <button className="whitespace-nowrap text-ellipsis overflow-hidden py-3 w-[160px] px-6 border-[2px] border-green-main bg-[#fff] text-[#000] font-semibold rounded-lg text-xl tracking-widest hover:shadow-green-main transition-all outline-none">
                   {skill}
