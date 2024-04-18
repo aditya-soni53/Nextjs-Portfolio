@@ -13,7 +13,10 @@ async function fetchData(section) {
     cache: "no-store",
   });
   const data = await res.json();
-  return data && data.data;
+
+  console.log(data, `${section} data`);
+
+  return data.data;
 }
 
 export default function Home() {
@@ -40,6 +43,12 @@ export default function Home() {
 
     fetchDataForAllSections();
   }, []);
+
+  console.log(homeData, "homeData");
+  console.log(aboutData, "aboutData");
+  console.log(experienceData, "experienceData");
+  console.log(educationData, "educationData");
+  console.log(projectData, "projectData");
 
   return (
     <>
