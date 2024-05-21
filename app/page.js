@@ -45,7 +45,6 @@ export default function Home() {
         const education = fetchDataForSection("education", setEducationData);
         const projects = fetchDataForSection("projects", setProjectData);
         await Promise.all([home, about, experience, education, projects]);
-        setDataFetched(true);
       } catch (error) {
         // Handle the error, e.g., show a message to the user
         console.error("Error fetching data for all sections:", error);
